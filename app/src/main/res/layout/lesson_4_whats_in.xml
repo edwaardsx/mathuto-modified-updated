@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F6F9"
+    tools:context=".fragments.lesson4.WhatsInFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_tts"
+                    android:text="Read Aloud"
+                    android:fontFamily="@font/geologica_regular"
+                    android:background="@drawable/btn_secondary_button"
+                    android:drawableStart="@drawable/ic_text_to_speech"
+                    android:textAllCaps="false"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/description_1"
+                android:textColor="@color/black"
+                android:text="Are you ready kid to take the challenge? The gate is open wide for you to get inside to this challenging world.\n\n"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/description_2"
+                android:textColor="@color/black"
+                android:text="A. Directions: Give the answer in lowest term. Write you answers in your answer sheets.\n\n1) 2/10 + 1/5 =_____________________\n2) 3/4 -1/2 =_____________________\n 3) 1/3 x 2 2/5 =_____________________\n4) (1/2 x 8) x 5 =_____________________\n\nB. Direction: Arrange the letters to form a word as fast as you can. Write you answers in your answer sheets.\n\n1) nnudtaresd - _____________________________________\n2) anlp - _____________________________________\n3) oevls - _____________________________________n\n4) cchke - _____________________________________\n\nDid you get it right, Kids? How long did you do it? Congratulations for accomplishing this activity! We can move on now to the new world of knowledge."
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/example_1"
+                android:src="@drawable/lesson_4_sample_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/description_3"
+                android:text="Back to our normal days before the COVID-19 started to spread, we used to go to school every weekday of the school year. Going to school, we rode using different types of vehicles like bicycle, car, motorcycle, or tricycle. Kids, what vehicle do you usually use for transportation? Wow! You must have enjoyed you travel then. In this situation, Dave uses a car going to school. Now, can you help me find out the speed of Dave’s car?\n\nProblem: Dave drives an average speed of 54 kph. How many kilometers can he travel in 2 2/6 hours?\n\nUnderstand:\n\nAsked: distance travel/number of km travel\n\nGiven: 54 kph, 2 2/6 hours\n\nPlan:Operation: multiplication\n\nSolve:\n\n54 x 2 2/6 = 54 x 14/6 = 54 x 14/6= 126 km\n\nAnswer: Dave can travel 126 km.\n\nCheck:\n\n126 ÷ 54 = 2 18/54 or 2 2/6"
+                android:fontFamily="@font/geologica_regular"
+                android:textColor="@color/black"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

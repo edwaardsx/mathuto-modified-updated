@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F6F9"
+    tools:context=".fragments.lesson7.WhatsInFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_tts"
+                    android:text="Read Aloud"
+                    android:fontFamily="@font/geologica_regular"
+                    android:background="@drawable/btn_secondary_button"
+                    android:drawableStart="@drawable/ic_text_to_speech"
+                    android:textAllCaps="false"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/description_1"
+                android:textColor="@color/black"
+                android:text="In this lesson, you will use your understanding of the previous topic to solve problems involving addition and subtraction of fractions. Using an illustration is a great help to answer some problems.\n\nDeeper understanding of the text of the word problem serves as a crucial step before mathematical computations can be performed. Hence, it is very important to teach the learners the process of solving word-based problems."
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/description_2"
+                android:textColor="@color/black"
+                android:text="Example # 1:\n\nYael walked one-half of a kilometer yesterday and three-fourths of a kilometer today. How many miles has Yael walked?\n\nSolution\n\nThis word problem requires addition of fractions\n Choosing a common denominator of 4, we get\n\n1/2 + 3/4 = 2/4 = 3/4 = 5/4 𝑜𝑟 1 1/4\n\nSo, Yael walked a total of 1 1/4 kilometers.\n\nExample #2:\n\nMother bought three and one-third dozen apples. She served three-fourths of the apples to Rico’s friends. How many apples remained?\n\nSolution\n\nThis word problem requires subtraction of fractions\nChoosing a common denominator of 12, we get:\n\n3 1/3 − 1/3 = 10/3 − 3/4 = 40/12 − 9/12 = 31/12 = 2 7/12\n\nSo, there were 2 7/12 apples remained."
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

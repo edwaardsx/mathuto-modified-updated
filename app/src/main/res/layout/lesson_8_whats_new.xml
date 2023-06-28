@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F6F9"
+    tools:context=".fragments.lesson8.WhatsNewFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_tts"
+                    android:text="Read Aloud"
+                    android:fontFamily="@font/geologica_regular"
+                    android:background="@drawable/btn_secondary_button"
+                    android:drawableStart="@drawable/ic_text_to_speech"
+                    android:textAllCaps="false"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/description_1"
+                android:textColor="@color/black"
+                android:text="Adding and subtracting decimal numbers is fun and easy to learn. The process is similar in adding or subtracting a whole number. Now, we want you to try solving the following word problems.\n\nRead and solve the word problem below.\n\nStory Problem 1: Find the sum.\n\nDolores bought these items at the bakeshop, a loaf bread for Php 35.50, peanut butter for Php 50.25, and a buko juice for Php 15.75. How much did she spend?"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/example_1"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="example"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/lesson_8_sample_3"/>
+            <TextView
+                android:id="@+id/description_2"
+                android:textColor="@color/black"
+                android:text="Story Problem 2: Finding the sums and differences.\n\nAntonia went shopping, she bought a pair of shoes for Php 95.34 and a pair of socks for Php 43.75. How much did she spend in all? How much change did she get from Php 500.00?"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/example_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="example"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/lesson_8_sample_3_1"/>
+            <TextView
+                android:id="@+id/description_3"
+                android:text="To add and subtract decimals is not too different to add and subtract any numbers. It is very important that you write your decimals so that the decimal points align, or you will find yourself adding tenths to ones or subtracting hundredths from tenths.\n\nBe sure that when adding or subtracting decimal numbers, they must have the same number of decimal places."
+                android:fontFamily="@font/geologica_regular"
+                android:textColor="@color/black"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/description_4"
+                android:text="Example of adding and subtracting decimals and mixed decimals through ten thousandths without and with regrouping, and explain each step.\n\nExample: Add and Subtract Decimals\n\nAddition without Regrouping:\nAdd: 2.345 + 1.678\nSolution:\nAlign the decimal points and add each place value together:\n2.345\n+ 1.678\n-------\n4.023\n\nThe sum of 2.345 and 1.678 is 4.023.\n\nAddition with Regrouping:\nAdd: 3.857 + 2.924\nSolution:\nAlign the decimal points and add each place value together:\n3.857\n+ 2.924\n-------\n6.781\n\nThe sum of 3.857 and 2.924 is 6.781.\n\nSubtraction without Regrouping:\nSubtract: 8.456 - 3.211\nSolution:\nAlign the decimal points and subtract each place value:\n8.456\n- 3.211\n-------\n5.245\n\nThe difference between 8.456 and 3.211 is 5.245.\n\nSubtraction with Regrouping:\nSubtract: 6.548 - 3.992\nSolution:\nAlign the decimal points and subtract each place value:\n6.548\n- 3.992\n-------\n2.556\n\nThe difference between 6.548 and 3.992 is 2.556.\n\nExample: Add and Subtract Mixed Decimals\n\nAddition without Regrouping:\nAdd: 4.215 + 2.5\nSolution:\nAdd the whole numbers separately and add the decimals separately:\n4 + 2 = 6\n0.215 + 0.5 = 0.715\n----------------------\n6.715\n\nThe sum of 4.215 and 2.5 is 6.715.\n\nAddition with Regrouping:\nAdd: 6.999 + 3.201\nSolution:\nAdd the whole numbers separately and add the decimals separately:\n6 + 3 = 9\n0.999 + 0.201 = 1.200\n----------------------\n9.200\n\nThe sum of 6.999 and 3.201 is 9.200.\n\nSubtraction without Regrouping:\nSubtract: 9.812 - 3.4\nSolution:\nSubtract the whole numbers separately and subtract the decimals separately:\n9 - 3 = 6\n0.812 - 0.4 = 0.412\n----------------------\n6.412\n\nThe difference between 9.812 and 3.4 is 6.412.\n\nSubtraction with Regrouping:\nSubtract: 8.599 - 6.111\nSolution:\nSubtract the whole numbers separately and subtract the decimals separately:\n8 - 6 = 2\n0.599 - 0.111 = 0.488\n----------------------\n2.488\n\nThe difference between 8.599 and 6.111 is 2.488.\n\nWhen adding and subtracting decimals, it is essential to line up the decimal points and perform the operations column by column. Take care to regroup (borrow or carry) when necessary to maintain accuracy. Practice these examples to strengthen your skills with adding and subtracting decimals and mixed decimals through ten thousandths.\n\n"
+                android:fontFamily="@font/geologica_regular"
+                android:textColor="@color/black"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

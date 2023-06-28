@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F6F9"
+    tools:context=".fragments.lesson7.WhatsNewFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_tts"
+                    android:text="Read Aloud"
+                    android:fontFamily="@font/geologica_regular"
+                    android:background="@drawable/btn_secondary_button"
+                    android:drawableStart="@drawable/ic_text_to_speech"
+                    android:textAllCaps="false"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/description_1"
+                android:textColor="@color/black"
+                android:text="Addition and Subtraction of Decimal Numbers\n\nAdding and subtracting decimal numbers is fun and easy to learn. The process is similar in adding or subtracting a whole number. Now, we want you to try to perform the activity.\n\nActivity 1: “Merienda Time”\n\nVince, Kath, and James went to the school canteen to buy snack food. The three pupils bought different foods from the canteen. Let’s see what food they have bought and find out how much each spent food for their merienda.\n\nAnswer the following questions. Write your answers on a separate sheet of paper. Show your solution.\n\n1. How much did each pupil spend for their merienda?\n a. Vince = ___________________\n b. Kath = ___________________\n c. James = ___________________\n\n2. Find the total amount spent by Vince and Kath.\n\n3. Find the difference of the total amount spent between James and Kath.\n\n4. If the total amount spent by Kath is subtracted from James’ total amount, what have you got?\n\n5. What is the total amount spent by the three pupils?"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/example_1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="example"
+                android:layout_marginVertical="10dp"
+                android:src="@drawable/lesson_7_sample_3" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

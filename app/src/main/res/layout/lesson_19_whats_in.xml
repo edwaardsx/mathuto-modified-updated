@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F6F9"
+    tools:context=".fragments.lesson19.WhatsInFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_tts"
+                    android:text="Read Aloud"
+                    android:fontFamily="@font/geologica_regular"
+                    android:background="@drawable/btn_secondary_button"
+                    android:drawableStart="@drawable/ic_text_to_speech"
+                    android:textAllCaps="false"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/description_1"
+                android:textColor="@color/black"
+                android:text="I know by now you have already mastered the steps in dividing decimals, mixed decimals, and whole numbers. Shall we have another set of activities for that?\n\nPlease answer the following exercises below:\n\nFind the quotient.\n\n1. 11.74 ÷ 2.4 =\n2. 15 ÷ 3.6 =\n3. 57.92 ÷ 5 =\n4. 16.86 ÷ 25 =\n5. 5.776 ÷ 5 =\n\nSo, were you able to come up with a correct answer? I’m sure you did. Great! This means you are now ready to take another step as we move on to our next lesson.\n\n"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/example_1"
+                android:src="@drawable/lesson_19_sample_1_1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <ImageView
+                android:id="@+id/example_2"
+                android:src="@drawable/lesson_19_sample_1_2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView
+                android:id="@+id/description_2"
+                android:textColor="@color/black"
+                android:text="So, how did you find the discussion of our lesson? Were you able to understand the important steps in solving word problems? I hope you did. This time try to read the problem below and answer the following questions. Be sure to follow the steps discussed above.\n\nMang Canor is an orchard grower. He has plenty of fruit trees in his backyard. Last month, he harvested 201.5 kilograms of mangoes and 65 kilograms of rambutan. He sold all the mangoes for Php8 060 and the rambutan for Php35 per kilogram. He planned to give his total earnings to his 3 sons. If equally divided, how much will each of his son receive after selling all fruits?\n\n1. What is asked in the problem? Write the question below.\n\n2. What are the given facts?\n\nComplete the phrases below.\n\na. There are _____ kilograms of mangoes harvested\n\nb. 65 kilograms of ____________ harvested\n\nc. Price of rambutan per kilogram is ____________.\n\nd. Mang Canor has ___________sons.\n\ne. The total cost of mangoes is ____________.\n\n3. Put a check mark if the following statements is a hidden question and an x if it is not.\n\n_____a. How much is the total earnings of Mang Canor from the fruits he sold?\n_____b. How many kilograms of mangoes did Mang Canor harvest?\n_____c. What is the total cost of rambutan if sold?\n\n4. What operation to be used in finding the total cost of rambutan?\n\na. addition\nb. subtraction\nc. multiplication\nd. division\n\n5. Which of the following number sentences will help you solve the total earnings of Mang Canor?\n\na. Php8 060 ÷ 3 = N\nb. Php35 x 65 kgs. = N\nc. Php8 060 + (Php35 x 65 kgs.) = N\nd. (Php35 x 65 kgs.) - Php8 060 = N\n\n6. How much will each son equally receive?\n\na. Php2 275\nb. Php3 445\nc. Php4 345\nd. Php10 335\n\n"
+                android:fontFamily="@font/geologica_regular"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
