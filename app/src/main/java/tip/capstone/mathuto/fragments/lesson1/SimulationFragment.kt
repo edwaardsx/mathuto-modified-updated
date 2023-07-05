@@ -32,10 +32,10 @@ class SimulationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnCalculator.setOnClickListener {
+        /*binding.btnCalculator.setOnClickListener {
             val intent = Intent(context, CalculatorActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         binding.simulation.setOnClickListener {
             val dialog = Dialog(requireContext())

@@ -326,63 +326,85 @@
         <activity
             android:name=".tutorial.Tutorial19Activity"
             android:exported="false" />
+
+
+
         <activity
             android:name=".lessons.Lesson1Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz"/>
         <activity
             android:name=".lessons.Lesson2Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz"/>
         <activity
             android:name=".lessons.Lesson3Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson4Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson5Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson6Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson7Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson8Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson9Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson10Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson11Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson12Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson13Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson14Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson15Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson16Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson17Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson18Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson19Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Mathuto.Quiz" />
 
 
 

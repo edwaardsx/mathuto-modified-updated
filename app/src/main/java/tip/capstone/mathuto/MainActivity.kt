@@ -86,12 +86,12 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         val dataList = listOf(
             if(QUIZ1_PASSED)
                 Data(R.drawable.recycler_img_1,
-                    "Addition and Subtraction of Fractions Part 1",
+                    "Addition and Subtraction of Fractions",
                     "Lesson 1", COMPLETED
                 )
             else
                 Data(R.drawable.recycler_img_1,
-                    "Addition and Subtraction of Fractions Part 1",
+                    "Addition and Subtraction of Fractions",
                     "Lesson 1", IN_PROGRESS
                 ),
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -645,10 +645,10 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_item_main, menu)
 
-        /*val searchItem = menu?.findItem(R.id.search)
+        val searchItem = menu?.findItem(R.id.search)
         val searchView = searchItem?.actionView as? SearchView
         searchView?.setOnQueryTextListener(this)
-        searchView?.queryHint = "Search for title & lessons"*/
+        searchView?.queryHint = "Search for title & lessons"
 
         return true
     }
@@ -668,14 +668,14 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
     private fun updateCarouselVisibility() {
         if (isSearching) {
             binding.tvContents.visibility = View.GONE
-            //binding.mainContents.visibility = View.GONE
-            if (recyclerAdapter.itemCount == 0) {
+            binding.tvLessons.visibility = View.GONE
+            /*if (recyclerAdapter.itemCount == 0) {
                 binding.tvLessons.text = "No results found"
-            }
+            }*/
         } else {
             binding.tvContents.visibility = View.VISIBLE
-            //binding.mainContents.visibility = View.VISIBLE
-            binding.tvLessons.text = "Lessons"
+            binding.tvLessons.visibility = View.VISIBLE
+            //binding.tvLessons.text = "Lessons"
         }
     }
 
@@ -700,10 +700,10 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
                 applicationContext.startActivity(intent)
                 overridePendingTransition(0, 0)
             }
-            /*R.id.search -> {
+            R.id.search -> {
                 isSearching = true
                 updateCarouselVisibility()
-            }*/
+            }
             else -> super.onOptionsItemSelected(item)
         }
         return super.onOptionsItemSelected(item)

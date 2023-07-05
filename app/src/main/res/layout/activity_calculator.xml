@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/idTVprimary"
-        android:background="@color/blac_shade_1"
+        android:background="@color/black_shade_1"
         app:cardCornerRadius="4dp"
         app:cardElevation="2dp">
 
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:background="@color/blac_shade_1"
+            android:background="@color/black_shade_1"
             android:orientation="vertical">
 
             <LinearLayout

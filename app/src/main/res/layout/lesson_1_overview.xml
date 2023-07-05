@@ -31,7 +31,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/geologica_bold"
                         android:gravity="center_vertical"
-                        android:text="Addition and Subtraction\nof Fractions Part 1"
+                        android:text="Addition and Subtraction\nof Fractions"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/black" />
                     <Button

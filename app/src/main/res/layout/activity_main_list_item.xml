@@ -38,7 +38,9 @@
                     android:id="@+id/title"
                     android:hint="Addition and Subtraction of Fractions"
                     android:textSize="18sp"
-                    android:fontFamily="@font/geologica_bold"
+                    android:textColor="@color/black_shade_1"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/geologica_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <LinearLayout

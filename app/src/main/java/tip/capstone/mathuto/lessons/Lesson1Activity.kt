@@ -68,7 +68,7 @@ class Lesson1Activity : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.objectives_1)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        //dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val btnClose = dialog.findViewById<ImageButton>(R.id.btn_objectives_close)
         btnClose.setOnClickListener {
