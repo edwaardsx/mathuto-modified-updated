@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.synnapps.carouselview.CarouselView
@@ -19,6 +20,7 @@ import tip.capstone.mathuto.databinding.ActivityMainBinding
 import tip.capstone.mathuto.lessons.*
 import tip.capstone.mathuto.recycler.Data
 import tip.capstone.mathuto.recycler.RecyclerViewAdapter
+import tip.capstone.mathuto.sqlite.MultipleChoice
 import tip.capstone.mathuto.tips.Tips
 import tip.capstone.mathuto.tips.TipsList
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
     private lateinit var searchView: SearchView
 
     private var isSearching = false
+    private val mMaxLessons = 19
 
     private val carouselImages = intArrayOf(
         R.drawable.carousel_1,
@@ -44,6 +47,10 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         window.statusBarColor = Color.parseColor("#F1F6F9")
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
+        //supportActionBar?.setLogo(R.drawable.logo_mathuto_black)
+
+        binding.progressBar.max = mMaxLessons
+        setProgressBar()
 
         carouselView = findViewById(R.id.carouselView)
         carouselView.pageCount = carouselImages.size
@@ -63,13 +70,6 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
             applicationContext.startActivity(intent)
             overridePendingTransition(0, 0)
         }
-
-        /*binding.progressMonitoring.setOnClickListener{
-            val intent = Intent(applicationContext, ProgressMonitoringActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            applicationContext.startActivity(intent)
-            overridePendingTransition(0, 0)
-        }*/
 
         binding.tips.setOnClickListener{
             val tips = TipsList.getTips().random()
@@ -618,6 +618,39 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun setProgressBar() {
+        var completedLessons = 0
+        if (QUIZ1_PASSED) completedLessons++
+        if (QUIZ2_PASSED) completedLessons++
+        if (QUIZ3_PASSED) completedLessons++
+        if (QUIZ4_PASSED) completedLessons++
+        if (QUIZ5_PASSED) completedLessons++
+        if (QUIZ6_PASSED) completedLessons++
+        if (QUIZ7_PASSED) completedLessons++
+        if (QUIZ8_PASSED) completedLessons++
+        if (QUIZ9_PASSED) completedLessons++
+        if (QUIZ10_PASSED) completedLessons++
+        if (QUIZ11_PASSED) completedLessons++
+        if (QUIZ12_PASSED) completedLessons++
+        if (QUIZ13_PASSED) completedLessons++
+        if (QUIZ14_PASSED) completedLessons++
+        if (QUIZ15_PASSED) completedLessons++
+        if (QUIZ16_PASSED) completedLessons++
+        if (QUIZ17_PASSED) completedLessons++
+        if (QUIZ19_PASSED) completedLessons++
+        if (QUIZ19_PASSED) completedLessons++
+
+        binding.progressBar.progress = completedLessons
+        //binding.tvProgress.text = "$completedLessons/$mMaxLessons"
+
+        val scorePercentage = (completedLessons.toFloat() / mMaxLessons) * 100
+        val formattedPercentage = String.format("%.0f", scorePercentage)
+        binding.tvProgress.text = "$formattedPercentage%"
+
+        binding.tvProgressStatus.text = "$completedLessons out of $mMaxLessons is complete"
+    }
+
     private fun showTipsDialog(tips: Tips) {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.activity_tip_of_the_day)
@@ -669,13 +702,13 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         if (isSearching) {
             binding.tvContents.visibility = View.GONE
             binding.tvLessons.visibility = View.GONE
-            /*if (recyclerAdapter.itemCount == 0) {
+            if (recyclerAdapter.itemCount == 0) {
                 binding.tvLessons.text = "No results found"
-            }*/
+            }
         } else {
             binding.tvContents.visibility = View.VISIBLE
             binding.tvLessons.visibility = View.VISIBLE
-            //binding.tvLessons.text = "Lessons"
+            binding.tvLessons.text = "Lessons"
         }
     }
 
@@ -711,9 +744,9 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
 
     companion object {
 
-        var QUIZ1_PASSED: Boolean = true
-        var QUIZ2_PASSED: Boolean = true
-        var QUIZ3_PASSED: Boolean = true
+        var QUIZ1_PASSED: Boolean = false
+        var QUIZ2_PASSED: Boolean = false
+        var QUIZ3_PASSED: Boolean = false
         var QUIZ4_PASSED: Boolean = false
         var QUIZ5_PASSED: Boolean = false
         var QUIZ6_PASSED: Boolean = false

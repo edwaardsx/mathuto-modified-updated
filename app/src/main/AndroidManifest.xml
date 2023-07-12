@@ -14,9 +14,8 @@
 
         <activity
             android:name=".FullScreenVideoActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
-
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ProgressMonitoringActivity"
             android:exported="false" />
@@ -26,10 +25,6 @@
         <activity
             android:name=".CalculatorActivity"
             android:exported="false" />
-
-
-
-
         <activity
             android:name=".quiz.summary.Summary1Activity"
             android:exported="false"
@@ -106,10 +101,6 @@
             android:name=".quiz.summary.Summary19Activity"
             android:exported="false"
             android:theme="@style/Theme.Mathuto.Quiz" />
-
-
-
-
         <activity
             android:name=".quiz.result.Result1Activity"
             android:exported="false"
@@ -186,14 +177,10 @@
             android:name=".quiz.result.Result19Activity"
             android:exported="false"
             android:theme="@style/Theme.Mathuto.Quiz" />
-
-
-
-
         <activity
             android:name=".quiz.Quiz1Activity"
             android:exported="false"
-            android:theme="@style/Theme.Mathuto.Quiz"/>
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".quiz.Quiz2Activity"
             android:exported="false"
@@ -237,7 +224,7 @@
         <activity
             android:name=".quiz.Quiz12Activity"
             android:exported="false"
-            android:theme="@style/Theme.Mathuto.Quiz"/>
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".quiz.Quiz13Activity"
             android:exported="false"
@@ -266,9 +253,6 @@
             android:name=".quiz.Quiz19Activity"
             android:exported="false"
             android:theme="@style/Theme.Mathuto.Quiz" />
-
-
-
         <activity
             android:name=".tutorial.Tutorial1Activity"
             android:exported="false" />
@@ -326,17 +310,14 @@
         <activity
             android:name=".tutorial.Tutorial19Activity"
             android:exported="false" />
-
-
-
         <activity
             android:name=".lessons.Lesson1Activity"
             android:exported="false"
-            android:theme="@style/Theme.Mathuto.Quiz"/>
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson2Activity"
             android:exported="false"
-            android:theme="@style/Theme.Mathuto.Quiz"/>
+            android:theme="@style/Theme.Mathuto.Quiz" />
         <activity
             android:name=".lessons.Lesson3Activity"
             android:exported="false"
@@ -405,9 +386,6 @@
             android:name=".lessons.Lesson19Activity"
             android:exported="false"
             android:theme="@style/Theme.Mathuto.Quiz" />
-
-
-
         <activity
             android:name=".menu.IntroductoryMessageActivity"
             android:exported="false" />
