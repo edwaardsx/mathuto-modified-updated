@@ -2,27 +2,33 @@ package tip.capstone.mathuto
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.*
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 import tip.capstone.mathuto.databinding.ActivityMainBinding
 import tip.capstone.mathuto.lessons.*
-import tip.capstone.mathuto.recycler.Data
+import tip.capstone.mathuto.questions.LessonList
 import tip.capstone.mathuto.recycler.RecyclerViewAdapter
+import tip.capstone.mathuto.sqlite.LessonItem
 import tip.capstone.mathuto.sqlite.MultipleChoice
+import tip.capstone.mathuto.sqlite.SQLiteHelper
 import tip.capstone.mathuto.tips.Tips
 import tip.capstone.mathuto.tips.TipsList
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListener, SearchView.OnQueryTextListener {
 
@@ -30,6 +36,8 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
     private lateinit var carouselView: CarouselView
     private lateinit var recyclerAdapter: RecyclerViewAdapter
     private lateinit var searchView: SearchView
+    private lateinit var db: SQLiteHelper
+    private lateinit var lessonItemList: List<LessonItem>
 
     private var isSearching = false
     private val mMaxLessons = 19
@@ -47,7 +55,6 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         window.statusBarColor = Color.parseColor("#F1F6F9")
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
-        //supportActionBar?.setLogo(R.drawable.logo_mathuto_black)
 
         binding.progressBar.max = mMaxLessons
         setProgressBar()
@@ -61,8 +68,19 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }*/
 
+        db = SQLiteHelper(this)
+        lessonItemList = LessonList.getLessons(db)
+
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        recyclerAdapter = RecyclerViewAdapter(lessonItemList, this)
+        recyclerView.adapter = recyclerAdapter
+
+        /*val savedLessonItems = retrieveSavedLessonItemsData()
+        if (savedLessonItems.isNotEmpty()) {
+            lessonItemList = savedLessonItems
+        }*/
 
         binding.listOfQuizScore.setOnClickListener{
             val intent = Intent(applicationContext, MainScoresActivity::class.java)
@@ -83,7 +101,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
             overridePendingTransition(0, 0)
         }
 
-        val dataList = listOf(
+        /*val dataList = listOf(
             if(QUIZ1_PASSED)
                 Data(R.drawable.recycler_img_1,
                     "Addition and Subtraction of Fractions",
@@ -436,16 +454,214 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
                     "Lesson 19",
                     LOCK
                 ),
-        )
-        val adapter = RecyclerViewAdapter(dataList, this)
+        )*/
+
+
+        /*val adapter = RecyclerViewAdapter(dataList, this)
         recyclerAdapter = adapter
 
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)*/
 
     }
 
-    override fun onItemClick(data: Data) {
+    /*override fun onDestroy() {
+        super.onDestroy()
+        // Save the lesson items data when the app is destroyed
+        saveLessonItemsData()
+    }
+
+    private fun saveLessonItemsData() {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("lessonItemsData", Gson().toJson(lessonItemList))
+        editor.apply()
+    }
+
+    private fun retrieveSavedLessonItemsData(): List<LessonItem> {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val lessonItemsData = sharedPreferences.getString("lessonItemsData", null)
+
+        if (!lessonItemsData.isNullOrEmpty()) {
+            return Gson().fromJson(lessonItemsData, object : TypeToken<List<LessonItem>>() {}.type)
+        }
+
+        return emptyList()
+    }*/
+
+    override fun onItemClick(lessons: LessonItem) {
+        val intent1 = when (lessons.lessonName) {
+            "Lesson 1" -> Intent(this, Lesson1Activity::class.java)
+            else -> null
+        }
+        intent1?.let {
+            startActivity(intent1)
+            overridePendingTransition(0, 0)
+        }
+        if (lessons.lessonName == "Lesson 2" && QUIZ1_PASSED) {
+            val intent2 = when (lessons.lessonName) {
+                "Lesson 2" -> Intent(this, Lesson2Activity::class.java)
+                else -> null
+            }
+            intent2?.let {
+                startActivity(intent2)
+            }
+        }
+        if (lessons.lessonName == "Lesson 3" && QUIZ2_PASSED) {
+            val intent3 = when (lessons.lessonName) {
+                "Lesson 3" -> Intent(this, Lesson3Activity::class.java)
+                else -> null
+            }
+            intent3?.let {
+                startActivity(intent3)
+            }
+        }
+        if (lessons.lessonName == "Lesson 4" && QUIZ3_PASSED) {
+            val intent4 = when (lessons.lessonName) {
+                "Lesson 4" -> Intent(this, Lesson4Activity::class.java)
+                else -> null
+            }
+            intent4?.let {
+                startActivity(intent4)
+            }
+        }
+        if (lessons.lessonName == "Lesson 5" && QUIZ4_PASSED) {
+            val intent5 = when (lessons.lessonName) {
+                "Lesson 5" -> Intent(this, Lesson5Activity::class.java)
+                else -> null
+            }
+            intent5?.let {
+                startActivity(intent5)
+            }
+        }
+        if (lessons.lessonName == "Lesson 6" && QUIZ5_PASSED) {
+            val intent6 = when (lessons.lessonName) {
+                "Lesson 6" -> Intent(this, Lesson6Activity::class.java)
+                else -> null
+            }
+            intent6?.let {
+                startActivity(intent6)
+            }
+        }
+        if (lessons.lessonName == "Lesson 7" && QUIZ6_PASSED) {
+            val intent7 = when (lessons.lessonName) {
+                "Lesson 7" -> Intent(this, Lesson7Activity::class.java)
+                else -> null
+            }
+            intent7?.let {
+                startActivity(intent7)
+            }
+        }
+        if (lessons.lessonName == "Lesson 8" && QUIZ7_PASSED) {
+            val intent8 = when (lessons.lessonName) {
+                "Lesson 8" -> Intent(this, Lesson8Activity::class.java)
+                else -> null
+            }
+            intent8?.let {
+                startActivity(intent8)
+            }
+        }
+        if (lessons.lessonName == "Lesson 9" && QUIZ8_PASSED) {
+            val intent9 = when (lessons.lessonName) {
+                "Lesson 9" -> Intent(this, Lesson9Activity::class.java)
+                else -> null
+            }
+            intent9?.let {
+                startActivity(intent9)
+            }
+        }
+        if (lessons.lessonName == "Lesson 10" && QUIZ9_PASSED) {
+            val intent10 = when (lessons.lessonName) {
+                "Lesson 10" -> Intent(this, Lesson10Activity::class.java)
+                else -> null
+            }
+            intent10?.let {
+                startActivity(intent10)
+            }
+        }
+        if (lessons.lessonName == "Lesson 11" && QUIZ10_PASSED) {
+            val intent11 = when (lessons.lessonName) {
+                "Lesson 11" -> Intent(this, Lesson11Activity::class.java)
+                else -> null
+            }
+            intent11?.let {
+                startActivity(intent11)
+            }
+        }
+        if (lessons.lessonName == "Lesson 12" && QUIZ11_PASSED) {
+            val intent12 = when (lessons.lessonName) {
+                "Lesson 12" -> Intent(this, Lesson12Activity::class.java)
+                else -> null
+            }
+            intent12?.let {
+                startActivity(intent12)
+            }
+        }
+        if (lessons.lessonName == "Lesson 13" && QUIZ12_PASSED) {
+            val intent13 = when (lessons.lessonName) {
+                "Lesson 13" -> Intent(this, Lesson13Activity::class.java)
+                else -> null
+            }
+            intent13?.let {
+                startActivity(intent13)
+            }
+        }
+        if (lessons.lessonName == "Lesson 14" && QUIZ13_PASSED) {
+            val intent14 = when (lessons.lessonName) {
+                "Lesson 14" -> Intent(this, Lesson14Activity::class.java)
+                else -> null
+            }
+            intent14?.let {
+                startActivity(intent14)
+            }
+        }
+        if (lessons.lessonName == "Lesson 15" && QUIZ14_PASSED) {
+            val intent15 = when (lessons.lessonName) {
+                "Lesson 15" -> Intent(this, Lesson15Activity::class.java)
+                else -> null
+            }
+            intent15?.let {
+                startActivity(intent15)
+            }
+        }
+        if (lessons.lessonName == "Lesson 16" && QUIZ15_PASSED) {
+            val intent16 = when (lessons.lessonName) {
+                "Lesson 16" -> Intent(this, Lesson16Activity::class.java)
+                else -> null
+            }
+            intent16?.let {
+                startActivity(intent16)
+            }
+        }
+        if (lessons.lessonName == "Lesson 17" && QUIZ16_PASSED) {
+            val intent17 = when (lessons.lessonName) {
+                "Lesson 17" -> Intent(this, Lesson17Activity::class.java)
+                else -> null
+            }
+            intent17?.let {
+                startActivity(intent17)
+            }
+        }
+        if (lessons.lessonName == "Lesson 18" && QUIZ17_PASSED) {
+            val intent18 = when (lessons.lessonName) {
+                "Lesson 18" -> Intent(this, Lesson18Activity::class.java)
+                else -> null
+            }
+            intent18?.let {
+                startActivity(intent18)
+            }
+        }
+        if (lessons.lessonName == "Lesson 19" && QUIZ18_PASSED) {
+            val intent19 = when (lessons.lessonName) {
+                "Lesson 19" -> Intent(this, Lesson19Activity::class.java)
+                else -> null
+            }
+            intent19?.let {
+                startActivity(intent19)
+            }
+        }
+
+    /*override fun onItemClick(data: LessonItem) {
         val intent1 = when (data.lesson) {
             "Lesson 1" -> Intent(this, Lesson1Activity::class.java)
             else -> null
@@ -615,7 +831,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
             intent19?.let {
                 startActivity(intent19)
             }
-        }
+        }*/
     }
 
     @SuppressLint("SetTextI18n")
@@ -642,13 +858,12 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         if (QUIZ19_PASSED) completedLessons++
 
         binding.progressBar.progress = completedLessons
-        //binding.tvProgress.text = "$completedLessons/$mMaxLessons"
 
         val scorePercentage = (completedLessons.toFloat() / mMaxLessons) * 100
         val formattedPercentage = String.format("%.0f", scorePercentage)
         binding.tvProgress.text = "$formattedPercentage%"
 
-        binding.tvProgressStatus.text = "$completedLessons out of $mMaxLessons is complete"
+        binding.tvProgressStatus.text = "$completedLessons out of $mMaxLessons lessons\nis complete."
     }
 
     private fun showTipsDialog(tips: Tips) {
@@ -670,6 +885,15 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         dialog.show()
     }
 
+    /*private fun updateRecyclerView(query: String) {
+        val filteredList = lessonItemList.filter { lessonItem ->
+            lessonItem.title.contains(query, ignoreCase = true) ||
+                    lessonItem.lessonName.contains(query, ignoreCase = true)
+        }
+        recyclerAdapter.updateData(filteredList)
+    }*/
+
+
     private val imageListener = ImageListener { position, imageView ->
         val imagePosition = position % carouselImages.size
         imageView.setImageResource(carouselImages[imagePosition])
@@ -681,7 +905,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         val searchItem = menu?.findItem(R.id.search)
         val searchView = searchItem?.actionView as? SearchView
         searchView?.setOnQueryTextListener(this)
-        searchView?.queryHint = "Search for title & lessons"
+        searchView?.queryHint = "Search title or lessons"
 
         return true
     }
@@ -690,18 +914,41 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnItemClickListene
         return true
     }
 
+    /*override fun onQueryTextChange(newText: String): Boolean {
+        recyclerAdapter.filter(newText)
+        isSearching = newText.isNotEmpty()
+        updateCarouselVisibility()
+        return true
+    }*/
+
     override fun onQueryTextChange(newText: String): Boolean {
+        //updateRecyclerView(newText)
         recyclerAdapter.filter(newText)
         isSearching = newText.isNotEmpty()
         updateCarouselVisibility()
         return true
     }
 
-    @SuppressLint("SetTextI18n")
+    /*@SuppressLint("SetTextI18n")
     private fun updateCarouselVisibility() {
         if (isSearching) {
             binding.tvContents.visibility = View.GONE
             binding.tvLessons.visibility = View.GONE
+            if (recyclerAdapter.itemCount == 0) {
+                binding.tvLessons.text = "No results found"
+            }
+        } else {
+            binding.tvContents.visibility = View.VISIBLE
+            binding.tvLessons.visibility = View.VISIBLE
+            binding.tvLessons.text = "Lessons"
+        }
+    }*/
+
+    @SuppressLint("SetTextI18n")
+    private fun updateCarouselVisibility() {
+        if (isSearching) {
+            binding.tvContents.visibility = View.GONE
+            binding.tvLessons.visibility = View.INVISIBLE
             if (recyclerAdapter.itemCount == 0) {
                 binding.tvLessons.text = "No results found"
             }

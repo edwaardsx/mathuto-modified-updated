@@ -20,7 +20,7 @@
         <item
             android:id="@+id/about"
             android:title="About"
-            android:icon="@drawable/ic_about"
+            android:icon="@drawable/ic_about_menu"
             android:orderInCategory="100"
             app:showAsAction="never" />
         <!--<item

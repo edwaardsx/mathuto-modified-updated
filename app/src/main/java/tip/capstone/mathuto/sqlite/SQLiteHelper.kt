@@ -7,11 +7,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import tip.capstone.mathuto.tips.Tips
 
-class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "userScores.db", null, 1) {
+class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "mathuto.db", null, 1) {
 
     companion object;
 
     override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL("CREATE TABLE LESSONS(id Integer PRIMARY KEY, imagesResId TEXT, title TEXT, lessonName TEXT, status TEXT)")
         db.execSQL("CREATE TABLE HIGHSCORES(id Integer PRIMARY KEY, lesson TEXT, score TEXT)")
         db.execSQL("CREATE TABLE QUESTIONS(id TEXT, question TEXT, optionA TEXT, optionB TEXT, optionC TEXT, optionD TEXT, correctAnswer TEXT, explanation TEXT)")
         db.execSQL("CREATE TABLE QUESTIONSTF(id TEXT, question TEXT, optionA TEXT, optionB TEXT, correctAnswer TEXT, explanation TEXT)")
@@ -19,6 +20,7 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "userScores.db"
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS LESSONS")
         db.execSQL("DROP TABLE IF EXISTS HIGHSCORES")
         db.execSQL("DROP TABLE IF EXISTS QUESTIONS")
         db.execSQL("DROP TABLE IF EXISTS QUESTIONSTF")
@@ -53,6 +55,13 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "userScores.db"
         return true
     }
 
+    fun deleteLessons() :Boolean {
+        val db = writableDatabase
+        db.execSQL("DELETE FROM LESSONS")
+        db.close()
+        return true
+    }
+
     fun insertQuestion(multipleChoice: MultipleChoice) :Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -81,6 +90,20 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "userScores.db"
             put("explanation", trueOrFalse.explanation)
         }
         db.insert("QUESTIONSTF", null, values)
+        db.close()
+        return true
+    }
+
+    fun insertLessons(lessonItem: LessonItem) :Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("id", lessonItem.id)
+            put("imageResId", lessonItem.imageResId)
+            put("title", lessonItem.title)
+            put("lessonName", lessonItem.lessonName)
+            put("status", lessonItem.status)
+        }
+        db.insert("LESSONS", null, values)
         db.close()
         return true
     }
@@ -190,6 +213,32 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "userScores.db"
         cursor.close()
         db.close()
         return trueOrFalseList
+    }
+
+    @SuppressLint("Range")
+    fun getAllLessonItems(): List<LessonItem> {
+        val lessonItemList = mutableListOf<LessonItem>()
+        val db = readableDatabase
+        val selectQuery = "SELECT * FROM LESSONS"
+
+        val cursor = db.rawQuery(selectQuery, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndex("id"))
+                val imageResId = cursor.getInt(cursor.getColumnIndex("imageResId"))
+                val title = cursor.getString(cursor.getColumnIndex("title"))
+                val lessonName = cursor.getString(cursor.getColumnIndex("lessonName"))
+                val status = cursor.getInt(cursor.getColumnIndex("status"))
+
+                val lessonObject = LessonItem(id, imageResId, title, lessonName, status)
+                lessonItemList.add(lessonObject)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+        return lessonItemList
     }
 
     @SuppressLint("Range")

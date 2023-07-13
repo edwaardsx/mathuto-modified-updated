@@ -11,8 +11,82 @@ import androidx.recyclerview.widget.RecyclerView
 import tip.capstone.mathuto.MainActivity.Companion.COMPLETED
 import tip.capstone.mathuto.MainActivity.Companion.IN_PROGRESS
 import tip.capstone.mathuto.R
+import tip.capstone.mathuto.sqlite.LessonItem
 
-class RecyclerViewAdapter(private val dataList: List<Data>,
+class RecyclerViewAdapter(private val dataList: List<LessonItem>,
+                          private var itemClickListener: OnItemClickListener) :
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+    private var filteredList: List<LessonItem> = dataList
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageResId: ImageView = itemView.findViewById(R.id.image)
+        val title: TextView = itemView.findViewById(R.id.title)
+        val lessonName: TextView = itemView.findViewById(R.id.lesson)
+        val status: ImageView = itemView.findViewById(R.id.status)
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.activity_main_list_item, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val lesson = filteredList[position]
+        holder.imageResId.setImageResource(lesson.imageResId)
+        holder.title.text = lesson.title
+        holder.lessonName.text = lesson.lessonName
+        //holder.status.setImageResource(lesson.status)
+
+        when (lesson.status) {
+            IN_PROGRESS -> {
+                holder.status.setImageResource(R.drawable.ic_unlock)
+            }
+            COMPLETED -> {
+                holder.status.setImageResource(R.drawable.ic_done)
+            }
+            else -> {
+                holder.status.setImageResource(R.drawable.ic_lock)
+            }
+        }
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(lesson)
+        }
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation_fall_down)
+        holder.itemView.startAnimation(animation)
+    }
+
+    override fun getItemCount(): Int {
+        return filteredList.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(lessons: LessonItem)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newDataList: List<LessonItem>) {
+        filteredList = newDataList
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun filter(query: String) {
+        filteredList = if (query.isEmpty()) {
+            dataList
+        } else {
+            dataList.filter { data ->
+                data.title.contains(query, true) || data.lessonName.contains(query, true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+}
+
+/*class RecyclerViewAdapter(private val dataList: List<Data>,
                           private var itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
@@ -79,4 +153,4 @@ class RecyclerViewAdapter(private val dataList: List<Data>,
     }
 }
 
-data class Data(val image: Int, val title: String, val lesson: String, val status: Int)
+data class Data(val image: Int, val title: String, val lesson: String, val status: Int)*/
